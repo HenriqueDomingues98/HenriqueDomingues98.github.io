@@ -42,52 +42,41 @@ h1 em { font-style:italic; color:var(--muted); }
 .hero-location { font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
 .hero-desc { font-size:1rem; color:var(--muted); line-height:1.8; max-width:480px; margin-bottom:2.5rem; }
 .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
-.btn-primary { background:var(--gold); color:#000; text-decoration:none; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.85rem 2rem; border-radius:2px; font-weight:500; transition:background 0.2s,transform 0.15s; }
+.btn-primary { background:var(--gold); color:#000; text-decoration:none; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.85rem 2rem; border-radius:2px; font-weight:500; transition:background 0.2s,transform 0.15s; display:inline-block; }
 .btn-primary:hover { background:var(--gold-light); transform:translateY(-2px); }
-.btn-outline { border:1px solid var(--border); color:var(--muted); text-decoration:none; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.85rem 2rem; border-radius:2px; transition:border-color 0.2s,color 0.2s,transform 0.15s; }
+.btn-outline { border:1px solid var(--border); color:var(--muted); text-decoration:none; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.85rem 2rem; border-radius:2px; transition:border-color 0.2s,color 0.2s,transform 0.15s; display:inline-block; }
 .btn-outline:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
 
 /* HERO STATS */
 .hero-stats { display:flex; gap:3rem; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border); }
-.stat-item { }
 .stat-num { font-family:'Playfair Display',serif; font-size:2rem; color:var(--gold); }
 .stat-label { font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-top:0.2rem; }
 
-/* HERO RIGHT — FINANCE PREVIEW */
+/* HERO RIGHT — PROJETOS PREVIEW */
 .hero-right { position:relative; animation:fadeUp 0.8s 0.6s ease both; }
-.finance-preview { background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:8px; padding:1.5rem; backdrop-filter:blur(8px); box-shadow:0 24px 60px rgba(0,0,0,0.4); }
-.fp-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
-.fp-title { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); }
-.fp-badge { font-size:0.62rem; background:rgba(255,255,255,0.08); color:var(--accent); border:1px solid rgba(255,255,255,0.15); border-radius:99px; padding:0.2rem 0.6rem; letter-spacing:0.08em; }
-.fp-cards { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin-bottom:1rem; }
-.fp-card { background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:6px; padding:0.8rem; }
-.fp-card-label { font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.3rem; }
-.fp-card-val { font-family:'Playfair Display',serif; font-size:1.1rem; }
-.fp-card-val.green { color:#4ade80; }
-.fp-card-val.red { color:#f87171; }
-.fp-card-val.white { color:#fff; }
-.fp-chart-label { font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.6rem; }
-.fp-bars { display:flex; align-items:flex-end; gap:5px; height:70px; margin-bottom:0.35rem; }
-.fp-bar-wrap { flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; height:100%; justify-content:flex-end; }
-.fp-bar { width:100%; border-radius:3px 3px 0 0; transition:height 1.2s cubic-bezier(0.34,1.56,0.64,1); }
-.fp-bar.income { background:rgba(74,222,128,0.6); }
-.fp-bar.expense { background:rgba(248,113,113,0.6); }
-.fp-bar-m { font-size:0.55rem; color:var(--muted); }
-.fp-chart-legend { display:flex; gap:1rem; margin-bottom:1rem; }
-.fp-legend-item { display:flex; align-items:center; gap:0.3rem; font-size:0.62rem; color:var(--muted); }
-.fp-legend-dot { width:6px; height:6px; border-radius:50%; }
-.fp-cats { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1rem; }
-.fp-cat { font-size:0.58rem; padding:0.18rem 0.55rem; border-radius:99px; letter-spacing:0.06em; text-transform:uppercase; border:1px solid var(--border); color:var(--muted); }
-.fp-cat.hi { border-color:rgba(255,255,255,0.3); color:var(--accent); }
-.fp-cta { display:flex; align-items:center; justify-content:space-between; padding:0.75rem 1rem; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:6px; text-decoration:none; transition:background 0.2s,transform 0.2s; }
-.fp-cta:hover { background:rgba(255,255,255,0.1); transform:translateY(-2px); }
-.fp-cta-text { font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); font-weight:500; }
-.fp-cta-arrow { color:var(--accent); font-size:1rem; transition:transform 0.2s; }
-.fp-cta:hover .fp-cta-arrow { transform:translateX(4px); }
+.projects-preview { background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:8px; padding:1.5rem; backdrop-filter:blur(8px); box-shadow:0 24px 60px rgba(0,0,0,0.4); }
 
-/* SANTOS SHIELD */
-.santos-shield { text-align:center; margin-bottom:1.25rem; opacity:0.85; }
-.santos-shield img { width:56px; height:auto; filter:grayscale(30%) brightness(1.1); }
+.shield-center { text-align:center; margin-bottom:1.5rem; }
+.shield-center img { width:64px; height:auto; filter:grayscale(100%) brightness(1.2); opacity:0.9; }
+
+.pp-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem; }
+.pp-title { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); }
+.pp-badge { font-size:0.62rem; background:rgba(255,255,255,0.08); color:var(--accent); border:1px solid rgba(255,255,255,0.15); border-radius:99px; padding:0.2rem 0.6rem; letter-spacing:0.08em; }
+
+.pp-items { display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1.25rem; }
+.pp-item { display:flex; align-items:center; gap:0.75rem; padding:0.9rem 1rem; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:6px; transition:border-color 0.2s, background 0.2s; }
+.pp-item:hover { border-color:#555; background:rgba(255,255,255,0.07); }
+.pp-item-icon { font-size:1.1rem; flex-shrink:0; }
+.pp-item-text { flex:1; }
+.pp-item-name { font-size:0.82rem; color:var(--accent); font-weight:500; letter-spacing:0.04em; }
+.pp-item-sub { font-size:0.65rem; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase; margin-top:0.15rem; }
+.pp-item-arrow { color:var(--muted); font-size:0.8rem; }
+
+.pp-cta { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1rem; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); border-radius:6px; text-decoration:none; transition:background 0.2s,transform 0.2s; }
+.pp-cta:hover { background:rgba(255,255,255,0.13); transform:translateY(-2px); }
+.pp-cta-text { font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); font-weight:500; }
+.pp-cta-arrow { color:var(--accent); font-size:1rem; transition:transform 0.2s; }
+.pp-cta:hover .pp-cta-arrow { transform:translateX(4px); }
 
 /* SECTIONS */
 section { padding:6rem 3rem; border-top:1px solid var(--border); }
@@ -201,7 +190,7 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
     </p>
     <div class="hero-btns">
       <a href="#contact" class="btn-primary">Entrar em Contato</a>
-      <a href="#experience" class="btn-outline">Ver Experiência</a>
+      <a href="projetos.html" class="btn-outline">Ver Projetos →</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
@@ -219,52 +208,47 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
     </div>
   </div>
 
-  <!-- FINANCE PREVIEW -->
+  <!-- PROJETOS PREVIEW -->
   <div class="hero-right">
-    <div class="finance-preview">
-      <div class="santos-shield">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Santos_FC_logo.svg/200px-Santos_FC_logo.svg.png" alt="Santos FC" />
+    <div class="projects-preview">
+      <div class="shield-center">
+        <!-- Substitua o src pela URL da imagem que você subir no GitHub -->
+        <!-- Exemplo: src="santos.png" se estiver na mesma pasta -->
+        <img src="santos.png" alt="Santos FC" onerror="this.style.display='none'" />
       </div>
-      <div class="fp-header">
-        <span class="fp-title">Controle Financeiro</span>
-        <span class="fp-badge">✦ Pessoal</span>
+      <div class="pp-header">
+        <span class="pp-title">Projetos Pessoais</span>
+        <span class="pp-badge">✦ Portfólio</span>
       </div>
-      <div class="fp-cards">
-        <div class="fp-card">
-          <div class="fp-card-label">Renda</div>
-          <div class="fp-card-val green" id="fp-income">—</div>
+      <div class="pp-items">
+        <div class="pp-item">
+          <div class="pp-item-icon">📊</div>
+          <div class="pp-item-text">
+            <div class="pp-item-name">Controle Financeiro</div>
+            <div class="pp-item-sub">Dashboard pessoal · IA integrada</div>
+          </div>
+          <div class="pp-item-arrow">→</div>
         </div>
-        <div class="fp-card">
-          <div class="fp-card-label">Despesas</div>
-          <div class="fp-card-val red" id="fp-expense">—</div>
+        <div class="pp-item">
+          <div class="pp-item-icon">🌞</div>
+          <div class="pp-item-text">
+            <div class="pp-item-name">Logística Solar</div>
+            <div class="pp-item-sub">Processos · TOTVS · Sungrow</div>
+          </div>
+          <div class="pp-item-arrow">→</div>
         </div>
-        <div class="fp-card">
-          <div class="fp-card-label">Saldo</div>
-          <div class="fp-card-val white" id="fp-balance">—</div>
-        </div>
-        <div class="fp-card">
-          <div class="fp-card-label">% gasto</div>
-          <div class="fp-card-val red" id="fp-pct">—</div>
+        <div class="pp-item">
+          <div class="pp-item-icon">📈</div>
+          <div class="pp-item-text">
+            <div class="pp-item-name">Power BI Reports</div>
+            <div class="pp-item-sub">KPIs · Saving · Transporte</div>
+          </div>
+          <div class="pp-item-arrow">→</div>
         </div>
       </div>
-      <div class="fp-chart-label">Renda vs Despesas — 2025</div>
-      <div class="fp-bars" id="fp-bars"></div>
-      <div class="fp-chart-legend">
-        <div class="fp-legend-item"><div class="fp-legend-dot" style="background:rgba(74,222,128,0.8)"></div> Renda</div>
-        <div class="fp-legend-item"><div class="fp-legend-dot" style="background:rgba(248,113,113,0.8)"></div> Despesas</div>
-      </div>
-      <div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Categorias</div>
-      <div class="fp-cats">
-        <span class="fp-cat hi">Moradia</span>
-        <span class="fp-cat hi">Transporte</span>
-        <span class="fp-cat">Alimentação</span>
-        <span class="fp-cat">Saúde</span>
-        <span class="fp-cat">Lazer</span>
-        <span class="fp-cat">Digitais</span>
-      </div>
-      <a href="https://HenriqueDomingues98.github.io/Henrique-Domingues-Portifolio/finance/" target="_blank" class="fp-cta">
-        <span class="fp-cta-text">Abrir dashboard completo</span>
-        <span class="fp-cta-arrow">→</span>
+      <a href="projetos.html" class="pp-cta">
+        <span class="pp-cta-text">Ver todos os projetos</span>
+        <span class="pp-cta-arrow">→</span>
       </a>
     </div>
   </div>
@@ -319,7 +303,6 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
   <div class="section-label">Trajetória</div>
   <h2 class="section-title">Experiência <em>Profissional</em></h2>
   <div class="exp-list">
-
     <div class="exp-item">
       <div>
         <div class="exp-date">Set 2023 — Atual</div>
@@ -338,7 +321,6 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
         </ul>
       </div>
     </div>
-
     <div class="exp-item">
       <div>
         <div class="exp-date">Set 2021 — 2023</div>
@@ -355,7 +337,6 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
         </ul>
       </div>
     </div>
-
     <div class="exp-item">
       <div>
         <div class="exp-date">Set 2019 — Jul 2021</div>
@@ -371,7 +352,6 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
         </ul>
       </div>
     </div>
-
     <div class="exp-item">
       <div>
         <div class="exp-date">Set 2018 — Set 2019</div>
@@ -385,7 +365,6 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
         </ul>
       </div>
     </div>
-
     <div class="exp-item">
       <div>
         <div class="exp-date">Set 2014 — Jul 2015</div>
@@ -399,7 +378,6 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
         </ul>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -422,36 +400,11 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
       <div style="font-size:0.72rem;color:#555;margin-top:0.5rem;">Pausado para foco na logística</div>
     </div>
   </div>
-
   <div class="cert-grid">
-    <div class="cert-item">
-      <div class="cert-dot"></div>
-      <div>
-        <div class="cert-name">Introdução ao JavaScript</div>
-        <div class="cert-org">Fundação Bradesco · Mai 2023</div>
-      </div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-dot"></div>
-      <div>
-        <div class="cert-name">Fundamentos de TI</div>
-        <div class="cert-org">Fundação Bradesco · Mai 2023</div>
-      </div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-dot"></div>
-      <div>
-        <div class="cert-name">Introdução a Redes de Computadores</div>
-        <div class="cert-org">Fundação Bradesco · Mai 2023</div>
-      </div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-dot"></div>
-      <div>
-        <div class="cert-name">Administrando Banco de Dados</div>
-        <div class="cert-org">Fundação Bradesco · Mai 2023</div>
-      </div>
-    </div>
+    <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Introdução ao JavaScript</div><div class="cert-org">Fundação Bradesco · Mai 2023</div></div></div>
+    <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Fundamentos de TI</div><div class="cert-org">Fundação Bradesco · Mai 2023</div></div></div>
+    <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Introdução a Redes de Computadores</div><div class="cert-org">Fundação Bradesco · Mai 2023</div></div></div>
+    <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Administrando Banco de Dados</div><div class="cert-org">Fundação Bradesco · Mai 2023</div></div></div>
   </div>
 </section>
 
@@ -493,7 +446,7 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
     <div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:2rem;display:flex;flex-direction:column;justify-content:center;gap:1rem;">
       <div style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);">Disponível para oportunidades</div>
       <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;">Buscando posições de liderança em logística onde possa aplicar minha experiência em operações, análise de dados e gestão de equipes.</p>
-      <a href="https://wa.me/5511978082311" target="_blank" class="btn-primary" style="text-align:center;display:block;">💬 Chamar no WhatsApp</a>
+      <a href="https://wa.me/5511978082311" target="_blank" class="btn-primary" style="text-align:center;">💬 Chamar no WhatsApp</a>
     </div>
   </div>
 </section>
@@ -503,17 +456,14 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
   <div class="footer-links">
     <a href="https://www.linkedin.com/in/henrique-domingues-668986204/" target="_blank">LinkedIn</a>
     <a href="https://github.com/HenriqueDomingues98" target="_blank">GitHub</a>
-    <a href="https://HenriqueDomingues98.github.io/Henrique-Domingues-Portifolio/finance/" target="_blank">Finanças</a>
+    <a href="projetos.html">Projetos</a>
   </div>
 </footer>
 
 <!-- FLOATING BUTTON MOBILE -->
-<a href="https://HenriqueDomingues98.github.io/Henrique-Domingues-Portifolio/finance/" target="_blank" class="fp-fab">
-  💰 Finanças
-</a>
+<a href="projetos.html" class="fp-fab">📁 Projetos</a>
 
 <script>
-// Counter animation
 function animateCounter(el, target, suffix) {
   let current = 0;
   const step = target / 40;
@@ -523,43 +473,11 @@ function animateCounter(el, target, suffix) {
     if (current >= target) clearInterval(timer);
   }, 30);
 }
-
-// Finance preview
-const fpData = {
-  months: ['J','F','M','A','M','J','J','A','S','O','N','D'],
-  income:  [4500,4500,4500,4500,4500,4500,4500,4500,4500,4500,4500,4500],
-  expense: [3200,3800,3100,3400,3200,3100,3000,3000,3000,3000,3000,3000]
-};
-const totalIncome  = fpData.income.reduce((s,v)=>s+v,0);
-const totalExpense = fpData.expense.reduce((s,v)=>s+v,0);
-const totalBalance = totalIncome - totalExpense;
-const pct = Math.round((totalExpense/totalIncome)*100);
-function fmtK(n){ return n>=1000?'R$'+(n/1000).toFixed(0)+'k':'R$'+n; }
-function animateValue(el,target,formatter,duration){
-  let s=0; const step=target/(duration/16);
-  const t=setInterval(()=>{ s=Math.min(s+step,target); el.textContent=formatter(Math.floor(s)); if(s>=target)clearInterval(t); },16);
-}
-function buildBars(){
-  const c=document.getElementById('fp-bars');
-  const maxVal=Math.max(...fpData.income,...fpData.expense);
-  c.innerHTML=fpData.months.map((m,i)=>{
-    const incH=Math.round((fpData.income[i]/maxVal)*65);
-    const expH=Math.round((fpData.expense[i]/maxVal)*65);
-    return `<div class="fp-bar-wrap"><div style="display:flex;gap:2px;align-items:flex-end;width:100%;height:68px;"><div class="fp-bar income" data-h="${incH}" style="height:0;flex:1"></div><div class="fp-bar expense" data-h="${expH}" style="height:0;flex:1"></div></div><div class="fp-bar-m">${m}</div></div>`;
-  }).join('');
-  setTimeout(()=>{ document.querySelectorAll('.fp-bar').forEach(b=>b.style.height=b.dataset.h+'px'); },700);
-}
-
-window.addEventListener('load', ()=>{
-  setTimeout(()=>{
+window.addEventListener('load', () => {
+  setTimeout(() => {
     animateCounter(document.getElementById('stat-exp'), 10, '+');
     animateCounter(document.getElementById('stat-emp'), 4, '');
     animateCounter(document.getElementById('stat-cert'), 4, '');
-    animateValue(document.getElementById('fp-income'),  totalIncome,  fmtK, 1400);
-    animateValue(document.getElementById('fp-expense'), totalExpense, fmtK, 1400);
-    animateValue(document.getElementById('fp-balance'), totalBalance, fmtK, 1400);
-    animateValue(document.getElementById('fp-pct'),     pct, v=>v+'%', 1200);
-    buildBars();
   }, 500);
 });
 </script>
