@@ -64,7 +64,7 @@ h1 em { font-style:italic; color:var(--muted); }
 .pp-badge { font-size:0.62rem; background:rgba(255,255,255,0.08); color:var(--accent); border:1px solid rgba(255,255,255,0.15); border-radius:99px; padding:0.2rem 0.6rem; letter-spacing:0.08em; }
 
 .pp-items { display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1.25rem; }
-.pp-item { display:flex; align-items:center; gap:0.75rem; padding:0.9rem 1rem; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:6px; transition:border-color 0.2s, background 0.2s; }
+.pp-item { display:flex; align-items:center; gap:0.75rem; padding:0.9rem 1rem; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:6px; transition:border-color 0.2s, background 0.2s; text-decoration:none; }
 .pp-item:hover { border-color:#555; background:rgba(255,255,255,0.07); }
 .pp-item-icon { font-size:1.1rem; flex-shrink:0; }
 .pp-item-text { flex:1; }
@@ -190,7 +190,7 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
     </p>
     <div class="hero-btns">
       <a href="#contact" class="btn-primary">Entrar em Contato</a>
-      <a href="projetos.html" class="btn-outline">Ver Projetos →</a>
+      <a href="https://henriquedomingues98.github.io/Finance/" class="btn-outline">Ver Projetos →</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
@@ -212,8 +212,6 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
   <div class="hero-right">
     <div class="projects-preview">
       <div class="shield-center">
-        <!-- Substitua o src pela URL da imagem que você subir no GitHub -->
-        <!-- Exemplo: src="santos.png" se estiver na mesma pasta -->
         <img src="santos.png" alt="Santos FC" onerror="this.style.display='none'" />
       </div>
       <div class="pp-header">
@@ -221,32 +219,16 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
         <span class="pp-badge">✦ Portfólio</span>
       </div>
       <div class="pp-items">
-        <div class="pp-item">
+        <a href="https://henriquedomingues98.github.io/Finance/" target="_blank" class="pp-item">
           <div class="pp-item-icon">📊</div>
           <div class="pp-item-text">
             <div class="pp-item-name">Controle Financeiro</div>
             <div class="pp-item-sub">Dashboard pessoal · IA integrada</div>
           </div>
           <div class="pp-item-arrow">→</div>
-        </div>
-        <div class="pp-item">
-          <div class="pp-item-icon">🌞</div>
-          <div class="pp-item-text">
-            <div class="pp-item-name">Logística Solar</div>
-            <div class="pp-item-sub">Processos · TOTVS · Sungrow</div>
-          </div>
-          <div class="pp-item-arrow">→</div>
-        </div>
-        <div class="pp-item">
-          <div class="pp-item-icon">📈</div>
-          <div class="pp-item-text">
-            <div class="pp-item-name">Power BI Reports</div>
-            <div class="pp-item-sub">KPIs · Saving · Transporte</div>
-          </div>
-          <div class="pp-item-arrow">→</div>
-        </div>
+        </a>
       </div>
-      <a href="projetos.html" class="pp-cta">
+      <a href="https://henriquedomingues98.github.io/Finance/" target="_blank" class="pp-cta">
         <span class="pp-cta-text">Ver todos os projetos</span>
         <span class="pp-cta-arrow">→</span>
       </a>
@@ -456,12 +438,12 @@ footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; ju
   <div class="footer-links">
     <a href="https://www.linkedin.com/in/henrique-domingues-668986204/" target="_blank">LinkedIn</a>
     <a href="https://github.com/HenriqueDomingues98" target="_blank">GitHub</a>
-    <a href="projetos.html">Projetos</a>
+    <a href="https://henriquedomingues98.github.io/Finance/" target="_blank">Projetos</a>
   </div>
 </footer>
 
 <!-- FLOATING BUTTON MOBILE -->
-<a href="projetos.html" class="fp-fab">📁 Projetos</a>
+<a href="https://henriquedomingues98.github.io/Finance/" target="_blank" class="fp-fab">📁 Projetos</a>
 
 <script>
 function animateCounter(el, target, suffix) {
