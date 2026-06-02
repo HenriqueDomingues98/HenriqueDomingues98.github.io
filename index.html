@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henrique Domingues · Logística</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --card: #161616;
+  --border: #2a2a2a;
+  --gold: #ffffff;
+  --gold-light: #cccccc;
+  --text: #f0f0f0;
+  --muted: #777777;
+  --accent: #e0e0e0;
+  --success: #4ade80;
+  --danger: #f87171;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-weight:300; line-height:1.6; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:1.2rem 3rem; background:rgba(10,10,10,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+.nav-logo { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--gold); letter-spacing:0.05em; text-decoration:none; }
+.nav-links { display:flex; gap:2.5rem; list-style:none; }
+.nav-links a { color:var(--muted); text-decoration:none; font-size:0.75rem; letter-spacing:0.18em; text-transform:uppercase; transition:color 0.3s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-cta { background:var(--gold); color:#000; text-decoration:none; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.55rem 1.2rem; border-radius:2px; font-weight:500; transition:background 0.2s; }
+.nav-cta:hover { background:var(--gold-light); }
+
+/* HERO */
+#hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; align-items:center; padding:7rem 3rem 3rem; gap:4rem; position:relative; overflow:hidden; }
+.hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 70% 50%, rgba(255,255,255,0.03) 0%, transparent 60%); pointer-events:none; }
+.hero-tag { display:inline-flex; align-items:center; gap:0.5rem; border:1px solid var(--border); border-radius:2px; padding:0.4rem 0.9rem; font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:2rem; }
+.hero-tag::before { content:''; width:6px; height:6px; background:var(--gold); border-radius:50%; }
+h1 { font-family:'Playfair Display',serif; font-size:clamp(3rem,6vw,5.5rem); font-weight:400; line-height:1.0; margin-bottom:1.5rem; }
+h1 em { font-style:italic; color:var(--muted); }
+.hero-location { font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
+.hero-desc { font-size:1rem; color:var(--muted); line-height:1.8; max-width:480px; margin-bottom:2.5rem; }
+.hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn-primary { background:var(--gold); color:#000; text-decoration:none; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.85rem 2rem; border-radius:2px; font-weight:500; transition:background 0.2s,transform 0.15s; }
+.btn-primary:hover { background:var(--gold-light); transform:translateY(-2px); }
+.btn-outline { border:1px solid var(--border); color:var(--muted); text-decoration:none; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.85rem 2rem; border-radius:2px; transition:border-color 0.2s,color 0.2s,transform 0.15s; }
+.btn-outline:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+
+/* HERO STATS */
+.hero-stats { display:flex; gap:3rem; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border); }
+.stat-item { }
+.stat-num { font-family:'Playfair Display',serif; font-size:2rem; color:var(--gold); }
+.stat-label { font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-top:0.2rem; }
+
+/* HERO RIGHT — FINANCE PREVIEW */
+.hero-right { position:relative; animation:fadeUp 0.8s 0.6s ease both; }
+.finance-preview { background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:8px; padding:1.5rem; backdrop-filter:blur(8px); box-shadow:0 24px 60px rgba(0,0,0,0.4); }
+.fp-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
+.fp-title { font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); }
+.fp-badge { font-size:0.62rem; background:rgba(255,255,255,0.08); color:var(--accent); border:1px solid rgba(255,255,255,0.15); border-radius:99px; padding:0.2rem 0.6rem; letter-spacing:0.08em; }
+.fp-cards { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin-bottom:1rem; }
+.fp-card { background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:6px; padding:0.8rem; }
+.fp-card-label { font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.3rem; }
+.fp-card-val { font-family:'Playfair Display',serif; font-size:1.1rem; }
+.fp-card-val.green { color:#4ade80; }
+.fp-card-val.red { color:#f87171; }
+.fp-card-val.white { color:#fff; }
+.fp-chart-label { font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.6rem; }
+.fp-bars { display:flex; align-items:flex-end; gap:5px; height:70px; margin-bottom:0.35rem; }
+.fp-bar-wrap { flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; height:100%; justify-content:flex-end; }
+.fp-bar { width:100%; border-radius:3px 3px 0 0; transition:height 1.2s cubic-bezier(0.34,1.56,0.64,1); }
+.fp-bar.income { background:rgba(74,222,128,0.6); }
+.fp-bar.expense { background:rgba(248,113,113,0.6); }
+.fp-bar-m { font-size:0.55rem; color:var(--muted); }
+.fp-chart-legend { display:flex; gap:1rem; margin-bottom:1rem; }
+.fp-legend-item { display:flex; align-items:center; gap:0.3rem; font-size:0.62rem; color:var(--muted); }
+.fp-legend-dot { width:6px; height:6px; border-radius:50%; }
+.fp-cats { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1rem; }
+.fp-cat { font-size:0.58rem; padding:0.18rem 0.55rem; border-radius:99px; letter-spacing:0.06em; text-transform:uppercase; border:1px solid var(--border); color:var(--muted); }
+.fp-cat.hi { border-color:rgba(255,255,255,0.3); color:var(--accent); }
+.fp-cta { display:flex; align-items:center; justify-content:space-between; padding:0.75rem 1rem; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:6px; text-decoration:none; transition:background 0.2s,transform 0.2s; }
+.fp-cta:hover { background:rgba(255,255,255,0.1); transform:translateY(-2px); }
+.fp-cta-text { font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); font-weight:500; }
+.fp-cta-arrow { color:var(--accent); font-size:1rem; transition:transform 0.2s; }
+.fp-cta:hover .fp-cta-arrow { transform:translateX(4px); }
+
+/* SANTOS SHIELD */
+.santos-shield { text-align:center; margin-bottom:1.25rem; opacity:0.85; }
+.santos-shield img { width:56px; height:auto; filter:grayscale(30%) brightness(1.1); }
+
+/* SECTIONS */
+section { padding:6rem 3rem; border-top:1px solid var(--border); }
+.section-label { font-size:0.68rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem; }
+.section-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.5vw,3rem); font-weight:400; line-height:1.15; margin-bottom:3rem; }
+.section-title em { font-style:italic; color:var(--muted); }
+
+/* SKILLS */
+.skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.skill-card { background:var(--card); border:1px solid var(--border); border-radius:4px; padding:1.75rem; transition:border-color 0.3s,transform 0.2s; }
+.skill-card:hover { border-color:#555; transform:translateY(-3px); }
+.skill-icon { font-size:1.5rem; margin-bottom:1rem; }
+.skill-name { font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; font-weight:500; }
+.skill-desc { font-size:0.82rem; color:var(--muted); line-height:1.7; }
+.skill-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.75rem; }
+.skill-tag { font-size:0.62rem; padding:0.2rem 0.55rem; border:1px solid var(--border); border-radius:2px; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase; }
+
+/* EXPERIENCE */
+.exp-list { display:flex; flex-direction:column; gap:0; }
+.exp-item { display:grid; grid-template-columns:180px 1fr; gap:3rem; padding:2.5rem 0; border-bottom:1px solid var(--border); }
+.exp-item:last-child { border-bottom:none; }
+.exp-date { font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); padding-top:0.2rem; }
+.exp-current { display:inline-block; background:rgba(74,222,128,0.1); color:#4ade80; border:1px solid rgba(74,222,128,0.2); border-radius:99px; font-size:0.58rem; padding:0.15rem 0.55rem; margin-top:0.4rem; letter-spacing:0.08em; text-transform:uppercase; }
+.exp-role { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:400; margin-bottom:0.25rem; }
+.exp-company { font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem; }
+.exp-desc { font-size:0.88rem; color:var(--muted); line-height:1.8; }
+.exp-desc li { margin-bottom:0.4rem; padding-left:1rem; position:relative; }
+.exp-desc li::before { content:'—'; position:absolute; left:0; color:#444; }
+
+/* EDUCATION */
+.edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.edu-card { background:var(--card); border:1px solid var(--border); border-radius:4px; padding:1.75rem; }
+.edu-degree { font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:0.4rem; }
+.edu-school { font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+.edu-year { font-size:0.72rem; color:#555; }
+.edu-status { display:inline-block; font-size:0.6rem; padding:0.15rem 0.55rem; border-radius:99px; margin-top:0.5rem; letter-spacing:0.06em; text-transform:uppercase; }
+.edu-status.done { background:rgba(74,222,128,0.1); color:#4ade80; border:1px solid rgba(74,222,128,0.2); }
+.edu-status.paused { background:rgba(248,113,113,0.1); color:#f87171; border:1px solid rgba(248,113,113,0.2); }
+
+/* CERTS */
+.cert-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:2rem; }
+.cert-item { display:flex; align-items:center; gap:0.75rem; padding:0.9rem 1rem; background:var(--card); border:1px solid var(--border); border-radius:4px; }
+.cert-dot { width:6px; height:6px; background:var(--gold); border-radius:50%; flex-shrink:0; }
+.cert-name { font-size:0.82rem; color:var(--text); }
+.cert-org { font-size:0.68rem; color:var(--muted); }
+
+/* CONTACT */
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
+.contact-info { display:flex; flex-direction:column; gap:1.5rem; }
+.contact-item { display:flex; align-items:flex-start; gap:1rem; }
+.contact-icon { width:40px; height:40px; border:1px solid var(--border); border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+.contact-label { font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.25rem; }
+.contact-val { font-size:0.9rem; color:var(--text); }
+.contact-val a { color:var(--text); text-decoration:none; transition:color 0.2s; }
+.contact-val a:hover { color:var(--gold); }
+
+/* FLOATING BUTTON MOBILE */
+.fp-fab { display:none; position:fixed; bottom:1.5rem; right:1.5rem; z-index:500; align-items:center; gap:0.6rem; background:#fff; color:#000; text-decoration:none; border-radius:99px; padding:0.75rem 1.25rem; font-family:'DM Sans',sans-serif; font-size:0.78rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; box-shadow:0 8px 24px rgba(0,0,0,0.5); transition:transform 0.2s; }
+.fp-fab:hover { transform:translateY(-2px); }
+
+/* FOOTER */
+footer { padding:2rem 3rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+.footer-copy { font-size:0.72rem; color:var(--muted); letter-spacing:0.1em; }
+.footer-links { display:flex; gap:1.5rem; }
+.footer-links a { color:var(--muted); text-decoration:none; font-size:0.72rem; letter-spacing:0.1em; transition:color 0.2s; }
+.footer-links a:hover { color:var(--gold); }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.fade-in { animation:fadeUp 0.7s ease both; }
+
+@media (max-width:900px) {
+  nav { padding:1rem 1.5rem; }
+  .nav-links { display:none; }
+  #hero { grid-template-columns:1fr; padding:6rem 1.5rem 3rem; gap:2rem; }
+  .hero-right { display:none; }
+  .fp-fab { display:flex; }
+  section { padding:4rem 1.5rem; }
+  .skills-grid { grid-template-columns:1fr 1fr; }
+  .exp-item { grid-template-columns:1fr; gap:0.75rem; }
+  .edu-grid { grid-template-columns:1fr; }
+  .cert-grid { grid-template-columns:1fr; }
+  .contact-grid { grid-template-columns:1fr; gap:2rem; }
+  footer { flex-direction:column; gap:1rem; text-align:center; padding:2rem 1.5rem; }
+}
+@media (max-width:580px) {
+  .skills-grid { grid-template-columns:1fr; }
+  .hero-stats { gap:1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">H. Domingues</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Competências</a></li>
+    <li><a href="#experience">Experiência</a></li>
+    <li><a href="#contact">Contato</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Contato</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content fade-in">
+    <div class="hero-tag">Logística Sênior · Sungrow</div>
+    <h1>Henrique<br><em>Domingues</em></h1>
+    <div class="hero-location">Assistente Sênior de Logística · São Paulo, Brasil</div>
+    <p class="hero-desc">
+      Profissional de logística com experiência em controle de estoque, movimentação de cargas, sistema TOTVS e análise de dados via Power BI. Atualmente na Sungrow, liderando operações logísticas completas e sendo preparado para assumir equipe.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Entrar em Contato</a>
+      <a href="#experience" class="btn-outline">Ver Experiência</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num" id="stat-exp">0</div>
+        <div class="stat-label">Anos de experiência</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="stat-emp">0</div>
+        <div class="stat-label">Empresas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="stat-cert">0</div>
+        <div class="stat-label">Certificações</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINANCE PREVIEW -->
+  <div class="hero-right">
+    <div class="finance-preview">
+      <div class="santos-shield">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Santos_FC_logo.svg/200px-Santos_FC_logo.svg.png" alt="Santos FC" />
+      </div>
+      <div class="fp-header">
+        <span class="fp-title">Controle Financeiro</span>
+        <span class="fp-badge">✦ Pessoal</span>
+      </div>
+      <div class="fp-cards">
+        <div class="fp-card">
+          <div class="fp-card-label">Renda</div>
+          <div class="fp-card-val green" id="fp-income">—</div>
+        </div>
+        <div class="fp-card">
+          <div class="fp-card-label">Despesas</div>
+          <div class="fp-card-val red" id="fp-expense">—</div>
+        </div>
+        <div class="fp-card">
+          <div class="fp-card-label">Saldo</div>
+          <div class="fp-card-val white" id="fp-balance">—</div>
+        </div>
+        <div class="fp-card">
+          <div class="fp-card-label">% gasto</div>
+          <div class="fp-card-val red" id="fp-pct">—</div>
+        </div>
+      </div>
+      <div class="fp-chart-label">Renda vs Despesas — 2025</div>
+      <div class="fp-bars" id="fp-bars"></div>
+      <div class="fp-chart-legend">
+        <div class="fp-legend-item"><div class="fp-legend-dot" style="background:rgba(74,222,128,0.8)"></div> Renda</div>
+        <div class="fp-legend-item"><div class="fp-legend-dot" style="background:rgba(248,113,113,0.8)"></div> Despesas</div>
+      </div>
+      <div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Categorias</div>
+      <div class="fp-cats">
+        <span class="fp-cat hi">Moradia</span>
+        <span class="fp-cat hi">Transporte</span>
+        <span class="fp-cat">Alimentação</span>
+        <span class="fp-cat">Saúde</span>
+        <span class="fp-cat">Lazer</span>
+        <span class="fp-cat">Digitais</span>
+      </div>
+      <a href="https://HenriqueDomingues98.github.io/Henrique-Domingues-Portifolio/finance/" target="_blank" class="fp-cta">
+        <span class="fp-cta-text">Abrir dashboard completo</span>
+        <span class="fp-cta-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">O que eu faço</div>
+  <h2 class="section-title">Competências &amp; <em>Habilidades</em></h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">📦</div>
+      <div class="skill-name">Controle de Estoque</div>
+      <div class="skill-desc">Gestão completa de inventário, separação de mercadorias físicas e sistêmicas, implementação de controle de spare parts por número de série.</div>
+      <div class="skill-tags"><span class="skill-tag">TOTVS</span><span class="skill-tag">Inventário</span><span class="skill-tag">Spare Parts</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🚜</div>
+      <div class="skill-name">Operação de Empilhadeira</div>
+      <div class="skill-desc">Habilitado para empilhadeira elétrica retrátil e GLP. Transporte, armazenagem, conferência e separação de cargas com segurança.</div>
+      <div class="skill-tags"><span class="skill-tag">Elétrica</span><span class="skill-tag">GLP</span><span class="skill-tag">Retrátil</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Power BI & Reports</div>
+      <div class="skill-desc">Elaboração de reports mensais de saving de transporte, análise de dados logísticos e apresentação de indicadores para liderança.</div>
+      <div class="skill-tags"><span class="skill-tag">Power BI</span><span class="skill-tag">Saving</span><span class="skill-tag">KPIs</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🖥️</div>
+      <div class="skill-name">Sistema TOTVS</div>
+      <div class="skill-desc">Experiência em movimentação de tickets internos, separação sistêmica de mercadorias solares e gestão de processos logísticos no ERP.</div>
+      <div class="skill-tags"><span class="skill-tag">ERP</span><span class="skill-tag">Tickets</span><span class="skill-tag">Processos</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🌞</div>
+      <div class="skill-name">Logística Solar</div>
+      <div class="skill-desc">Separação de mercadorias fotovoltaicas físicas e sistêmicas, controle de equipamentos e materiais do setor de energia solar.</div>
+      <div class="skill-tags"><span class="skill-tag">Sungrow</span><span class="skill-tag">Fotovoltaico</span><span class="skill-tag">Galpão</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">👥</div>
+      <div class="skill-name">Liderança & Gestão</div>
+      <div class="skill-desc">Cobertura de férias de liderança, encaminhamento para assumir equipe própria e gestão logística completa do galpão.</div>
+      <div class="skill-tags"><span class="skill-tag">Liderança</span><span class="skill-tag">Gestão</span><span class="skill-tag">Equipe</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Trajetória</div>
+  <h2 class="section-title">Experiência <em>Profissional</em></h2>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">Set 2023 — Atual</div>
+        <div class="exp-current">● Em andamento</div>
+      </div>
+      <div>
+        <div class="exp-role">Assistente Sênior de Logística</div>
+        <div class="exp-company">Sungrow · São Paulo, Brasil</div>
+        <ul class="exp-desc">
+          <li>Controle logístico completo do galpão de energia solar</li>
+          <li>Separação de mercadorias fotovoltaicas físicas e sistêmicas via TOTVS</li>
+          <li>Implementação de controle de spare parts por número de série sistemicamente</li>
+          <li>Reports mensais de saving de transporte via Power BI</li>
+          <li>Movimentação de tickets internos e gestão de processos</li>
+          <li>Cobertura de férias da liderança — encaminhado para assumir equipe</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">Set 2021 — 2023</div>
+        <div style="font-size:0.68rem;color:#555;margin-top:0.3rem;">1 ano 5 meses</div>
+      </div>
+      <div>
+        <div class="exp-role">Operador de Empilhadeira</div>
+        <div class="exp-company">PHB Solar · São Paulo, Brasil</div>
+        <ul class="exp-desc">
+          <li>Retirada de paletes com material de produção e transporte ao estoque</li>
+          <li>Manutenção das condições mecânicas das empilhadeiras</li>
+          <li>Armazenagem, conferência e separação de cargas</li>
+          <li>Manuseio de empilhadeira elétrica retrátil e GLP</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">Set 2019 — Jul 2021</div>
+        <div style="font-size:0.68rem;color:#555;margin-top:0.3rem;">1 ano 11 meses</div>
+      </div>
+      <div>
+        <div class="exp-role">Operador de Empilhadeira</div>
+        <div class="exp-company">Total Química Oficial · Embu das Artes, SP</div>
+        <ul class="exp-desc">
+          <li>Retirada de paletes com material de produção e transporte ao estoque</li>
+          <li>Armazenagem, conferência e separação de cargas</li>
+          <li>Manuseio de empilhadeira elétrica retrátil e GLP</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">Set 2018 — Set 2019</div>
+        <div style="font-size:0.68rem;color:#555;margin-top:0.3rem;">1 ano 1 mês</div>
+      </div>
+      <div>
+        <div class="exp-role">Auxiliar de Produção</div>
+        <div class="exp-company">Total Química Oficial</div>
+        <ul class="exp-desc">
+          <li>Suporte às operações de produção industrial</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-date">Set 2014 — Jul 2015</div>
+        <div style="font-size:0.68rem;color:#555;margin-top:0.3rem;">11 meses</div>
+      </div>
+      <div>
+        <div class="exp-role">Assistente Administrativo · Aprendiz</div>
+        <div class="exp-company">CAMP Pinheiros · São Paulo, SP</div>
+        <ul class="exp-desc">
+          <li>Atuação como assistente administrativo em cartório</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Formação</div>
+  <h2 class="section-title">Educação &amp; <em>Certificações</em></h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-degree">Tecnologia em Logística</div>
+      <div class="edu-school">UNINOVE</div>
+      <div class="edu-year">Jan 2024 — 2025</div>
+      <div class="edu-status done">✓ Concluído</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">Análise e Desenvolvimento de Sistemas</div>
+      <div class="edu-school">UNINOVE</div>
+      <div class="edu-year">2023 — Em andamento</div>
+      <div class="edu-status paused">⏸ Em pausa</div>
+      <div style="font-size:0.72rem;color:#555;margin-top:0.5rem;">Pausado para foco na logística</div>
+    </div>
+  </div>
+
+  <div class="cert-grid">
+    <div class="cert-item">
+      <div class="cert-dot"></div>
+      <div>
+        <div class="cert-name">Introdução ao JavaScript</div>
+        <div class="cert-org">Fundação Bradesco · Mai 2023</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot"></div>
+      <div>
+        <div class="cert-name">Fundamentos de TI</div>
+        <div class="cert-org">Fundação Bradesco · Mai 2023</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot"></div>
+      <div>
+        <div class="cert-name">Introdução a Redes de Computadores</div>
+        <div class="cert-org">Fundação Bradesco · Mai 2023</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot"></div>
+      <div>
+        <div class="cert-name">Administrando Banco de Dados</div>
+        <div class="cert-org">Fundação Bradesco · Mai 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Vamos conversar</div>
+  <h2 class="section-title">Entre em <em>Contato</em></h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📱</div>
+        <div>
+          <div class="contact-label">Telefone / WhatsApp</div>
+          <div class="contact-val"><a href="https://wa.me/5511978082311">(11) 97808-2311</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">E-mail</div>
+          <div class="contact-val"><a href="mailto:henrique98domingues@gmail.com">henrique98domingues@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">💼</div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-val"><a href="https://www.linkedin.com/in/henrique-domingues-668986204/" target="_blank">linkedin.com/in/henrique-domingues</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🐙</div>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-val"><a href="https://github.com/HenriqueDomingues98" target="_blank">github.com/HenriqueDomingues98</a></div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:2rem;display:flex;flex-direction:column;justify-content:center;gap:1rem;">
+      <div style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);">Disponível para oportunidades</div>
+      <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;">Buscando posições de liderança em logística onde possa aplicar minha experiência em operações, análise de dados e gestão de equipes.</p>
+      <a href="https://wa.me/5511978082311" target="_blank" class="btn-primary" style="text-align:center;display:block;">💬 Chamar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-copy">© 2026 Henrique Domingues · Logística & Operações</div>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/henrique-domingues-668986204/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/HenriqueDomingues98" target="_blank">GitHub</a>
+    <a href="https://HenriqueDomingues98.github.io/Henrique-Domingues-Portifolio/finance/" target="_blank">Finanças</a>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTON MOBILE -->
+<a href="https://HenriqueDomingues98.github.io/Henrique-Domingues-Portifolio/finance/" target="_blank" class="fp-fab">
+  💰 Finanças
+</a>
+
+<script>
+// Counter animation
+function animateCounter(el, target, suffix) {
+  let current = 0;
+  const step = target / 40;
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = Math.floor(current) + (suffix || '');
+    if (current >= target) clearInterval(timer);
+  }, 30);
+}
+
+// Finance preview
+const fpData = {
+  months: ['J','F','M','A','M','J','J','A','S','O','N','D'],
+  income:  [4500,4500,4500,4500,4500,4500,4500,4500,4500,4500,4500,4500],
+  expense: [3200,3800,3100,3400,3200,3100,3000,3000,3000,3000,3000,3000]
+};
+const totalIncome  = fpData.income.reduce((s,v)=>s+v,0);
+const totalExpense = fpData.expense.reduce((s,v)=>s+v,0);
+const totalBalance = totalIncome - totalExpense;
+const pct = Math.round((totalExpense/totalIncome)*100);
+function fmtK(n){ return n>=1000?'R$'+(n/1000).toFixed(0)+'k':'R$'+n; }
+function animateValue(el,target,formatter,duration){
+  let s=0; const step=target/(duration/16);
+  const t=setInterval(()=>{ s=Math.min(s+step,target); el.textContent=formatter(Math.floor(s)); if(s>=target)clearInterval(t); },16);
+}
+function buildBars(){
+  const c=document.getElementById('fp-bars');
+  const maxVal=Math.max(...fpData.income,...fpData.expense);
+  c.innerHTML=fpData.months.map((m,i)=>{
+    const incH=Math.round((fpData.income[i]/maxVal)*65);
+    const expH=Math.round((fpData.expense[i]/maxVal)*65);
+    return `<div class="fp-bar-wrap"><div style="display:flex;gap:2px;align-items:flex-end;width:100%;height:68px;"><div class="fp-bar income" data-h="${incH}" style="height:0;flex:1"></div><div class="fp-bar expense" data-h="${expH}" style="height:0;flex:1"></div></div><div class="fp-bar-m">${m}</div></div>`;
+  }).join('');
+  setTimeout(()=>{ document.querySelectorAll('.fp-bar').forEach(b=>b.style.height=b.dataset.h+'px'); },700);
+}
+
+window.addEventListener('load', ()=>{
+  setTimeout(()=>{
+    animateCounter(document.getElementById('stat-exp'), 10, '+');
+    animateCounter(document.getElementById('stat-emp'), 4, '');
+    animateCounter(document.getElementById('stat-cert'), 4, '');
+    animateValue(document.getElementById('fp-income'),  totalIncome,  fmtK, 1400);
+    animateValue(document.getElementById('fp-expense'), totalExpense, fmtK, 1400);
+    animateValue(document.getElementById('fp-balance'), totalBalance, fmtK, 1400);
+    animateValue(document.getElementById('fp-pct'),     pct, v=>v+'%', 1200);
+    buildBars();
+  }, 500);
+});
+</script>
+</body>
+</html>
